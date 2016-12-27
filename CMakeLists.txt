@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8)
-project(inspectrum CXX)
+project(emerald-mainframe CXX)
 enable_testing()
 
 set(CMAKE_AUTOMOC ON)
@@ -23,30 +23,13 @@ if (NOT CMAKE_CXX_FLAGS)
 endif (NOT CMAKE_CXX_FLAGS)
 
 # This only works in cmake >3.1
-#set_property(TARGET inspectrum PROPERTY CXX_STANDARD 11)
+#set_property(TARGET emerald-mainframe PROPERTY CXX_STANDARD 11)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=gnu++11")
 
-list(APPEND inspectrum_sources 
-    amplitudedemod.cpp
-    cursor.cpp
-    cursors.cpp
+list(APPEND emerald-mainframe_sources 
     main.cpp
     fft.cpp
-    frequencydemod.cpp
     mainwindow.cpp
-    inputsource.cpp
-    plot.cpp
-    plots.cpp
-    plotview.cpp
-    samplebuffer.cpp
-    samplesource.cpp
-    spectrogramcontrols.cpp
-    spectrogramplot.cpp
-    threshold.cpp
-    traceplot.cpp
-    tuner.cpp
-    tunertransform.cpp
-    util.cpp
 )
 
 INCLUDE(FindPkgConfig)
@@ -66,10 +49,10 @@ link_directories(
     ${FFTW_LIBRARY_DIRS}
 )
 
-add_executable(inspectrum ${inspectrum_sources})
-qt5_use_modules(inspectrum Widgets Concurrent)
+add_executable(emerald-mainframe ${emerald-mainframe_sources})
+qt5_use_modules(emerald-mainframe Widgets Concurrent)
 
-target_link_libraries(inspectrum
+target_link_libraries(emerald-mainframe
     ${QT_LIBRARIES}
     ${FFTW_LIBRARIES}
     ${LIQUID_LIBRARIES}
@@ -77,7 +60,7 @@ target_link_libraries(inspectrum
 )
 set(INSTALL_DEFAULT_BINDIR "bin" CACHE STRING "Appended to CMAKE_INSTALL_PREFIX")
 
-install(TARGETS inspectrum RUNTIME DESTINATION ${INSTALL_DEFAULT_BINDIR})
+install(TARGETS emerald-mainframe RUNTIME DESTINATION ${INSTALL_DEFAULT_BINDIR})
 
 # Create uninstall target
 configure_file(

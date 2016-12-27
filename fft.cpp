@@ -1,7 +1,7 @@
 /*
- *  Copyright (C) 2015, Mike Walters <mike@flomp.net>
+ *  Copyright (C) 2016, Mike Walters <mike@flomp.net>
  *
- *  This file is part of inspectrum.
+ *  This file is part of emerald-mainframe.
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
