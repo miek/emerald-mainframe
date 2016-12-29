@@ -18,9 +18,12 @@
  */
 
 #include "mainwindow.h"
+#include "filesource.h"
 
-MainWindow::MainWindow()
+MainWindow::MainWindow() : source("../datas.bin")
 {
     setWindowTitle(tr("emerald-mainframe"));
+
+    source.start();
 }
 

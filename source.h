@@ -19,16 +19,12 @@
 
 #pragma once
 
-#include <QMainWindow>
-#include "filesource.h"
+#include <QObject>
+#include <complex>
 
-class MainWindow : public QMainWindow
+class Source : public QObject
 {
-    Q_OBJECT
-
 public:
-    MainWindow();
-
-private:
-    FileSource source;
+    virtual void start() = 0;
+    virtual void stop() = 0;
 };

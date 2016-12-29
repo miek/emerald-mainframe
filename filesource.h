@@ -19,16 +19,30 @@
 
 #pragma once
 
-#include <QMainWindow>
-#include "filesource.h"
+#include "source.h"
+#include <QFuture>
+#include <memory>
 
-class MainWindow : public QMainWindow
+using Sample = std::complex<float>;
+
+class FileSource : public Source
 {
     Q_OBJECT
 
 public:
-    MainWindow();
+    FileSource(const char *path);
+    ~FileSource();
+
+    void start() override;
+    void stop() override;
+
+signals:
+    void samplesProduced(uint64_t frequency, int sample_rate, std::shared_ptr<std::vector<Sample>> samples);
 
 private:
-    FileSource source;
+    void produceSamples();
+
+    FILE *f;
+    bool runThread = false;
+    QFuture<void> future;
 };

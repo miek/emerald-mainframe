@@ -24,6 +24,7 @@ endif (NOT CMAKE_CXX_FLAGS)
 
 list(APPEND emerald-mainframe_sources 
     main.cpp
+    filesource.cpp
     fft.cpp
     mainwindow.cpp
 )
