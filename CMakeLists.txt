@@ -22,10 +22,6 @@ if (NOT CMAKE_CXX_FLAGS)
     set(CMAKE_CXX_FLAGS "-O2")
 endif (NOT CMAKE_CXX_FLAGS)
 
-# This only works in cmake >3.1
-#set_property(TARGET emerald-mainframe PROPERTY CXX_STANDARD 11)
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=gnu++11")
-
 list(APPEND emerald-mainframe_sources 
     main.cpp
     fft.cpp
@@ -61,6 +57,10 @@ target_link_libraries(emerald-mainframe
 set(INSTALL_DEFAULT_BINDIR "bin" CACHE STRING "Appended to CMAKE_INSTALL_PREFIX")
 
 install(TARGETS emerald-mainframe RUNTIME DESTINATION ${INSTALL_DEFAULT_BINDIR})
+
+# This only works in cmake >3.1
+set_property(TARGET emerald-mainframe PROPERTY CXX_STANDARD 14)
+#set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=gnu++11")
 
 # Create uninstall target
 configure_file(
