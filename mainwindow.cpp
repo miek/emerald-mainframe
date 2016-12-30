@@ -18,12 +18,18 @@
  */
 
 #include "mainwindow.h"
+#include <QMetaType>
 #include "filesource.h"
 
 MainWindow::MainWindow() : source("../datas.bin")
 {
     setWindowTitle(tr("emerald-mainframe"));
+    setCentralWidget(&specanWidget);
 
+	qRegisterMetaType<uint64_t>("uint64_t");
+	qRegisterMetaType<std::shared_ptr<std::vector<Sample>>>("std::shared_ptr<std::vector<Sample>>");
+
+    connect(&source, &FileSource::samplesProduced, &specanWidget, &SpecanWidget::handleSamples);
     source.start();
 }
 

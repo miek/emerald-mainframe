@@ -27,6 +27,7 @@ list(APPEND emerald-mainframe_sources
     filesource.cpp
     fft.cpp
     mainwindow.cpp
+    specanwidget.cpp
 )
 
 INCLUDE(FindPkgConfig)

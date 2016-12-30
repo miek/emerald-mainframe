@@ -17,20 +17,10 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#pragma once
-
-#include <QMainWindow>
-#include "filesource.h"
 #include "specanwidget.h"
+#include <QDebug>
 
-class MainWindow : public QMainWindow
+void SpecanWidget::handleSamples(uint64_t frequency, int sample_rate, std::shared_ptr<std::vector<Sample>> samples)
 {
-    Q_OBJECT
-
-public:
-    MainWindow();
-
-private:
-    FileSource source;
-    SpecanWidget specanWidget;
-};
+	qDebug() << "got samples " << frequency;
+}

@@ -19,18 +19,16 @@
 
 #pragma once
 
-#include <QMainWindow>
-#include "filesource.h"
-#include "specanwidget.h"
+#include <QOpenGLWidget>
+#include <complex>
+#include <memory>
 
-class MainWindow : public QMainWindow
+using Sample = std::complex<float>;
+
+class SpecanWidget : public QOpenGLWidget
 {
     Q_OBJECT
 
-public:
-    MainWindow();
-
-private:
-    FileSource source;
-    SpecanWidget specanWidget;
+public slots:
+	void handleSamples(uint64_t frequency, int sample_rate, std::shared_ptr<std::vector<Sample>> samples);
 };

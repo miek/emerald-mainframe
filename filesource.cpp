@@ -64,7 +64,6 @@ void FileSource::produceSamples()
             qDebug() << "FileSource: Out of sync (bad frequency)";
             continue;
         }
-        qDebug() << "Freq: " << frequency;
         auto samples = std::make_shared<std::vector<std::complex<float>>>();
         for (int i = 4; i < 0x4000; i += 2) {
             samples->emplace_back(buffer[i] / 128.0f, buffer[i + 1] / 128.0f);
