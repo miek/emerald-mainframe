@@ -20,7 +20,24 @@
 #include "specanwidget.h"
 #include <QDebug>
 
+SpecanWidget::SpecanWidget() : fft(128), skipCount(1024)
+{
+
+}
+
+void SpecanWidget::handleFFTResult(uint64_t frequency, int sample_rate, std::vector<Sample> &result)
+{
+	// TODO: things
+}
+
 void SpecanWidget::handleSamples(uint64_t frequency, int sample_rate, std::shared_ptr<std::vector<Sample>> samples)
 {
 	qDebug() << "got samples " << frequency;
+
+	auto result = std::vector<Sample>(fft.getSize());
+	auto end = samples->size() - fft.getSize();
+	for (int i = skipCount; i < end; i += fft.getSize()) {
+		fft.process(&result[0], &samples.get()[i]);
+		handleFFTResult(frequency, sample_rate, result);
+	}
 }

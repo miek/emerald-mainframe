@@ -22,6 +22,7 @@
 #include <QOpenGLWidget>
 #include <complex>
 #include <memory>
+#include "fft.h"
 
 using Sample = std::complex<float>;
 
@@ -29,6 +30,14 @@ class SpecanWidget : public QOpenGLWidget
 {
     Q_OBJECT
 
+public:
+	SpecanWidget();
+
 public slots:
+	void handleFFTResult(uint64_t frequency, int sample_rate, std::vector<Sample> &result);
 	void handleSamples(uint64_t frequency, int sample_rate, std::shared_ptr<std::vector<Sample>> samples);
+
+private:
+	FFT fft;
+	int skipCount;
 };
