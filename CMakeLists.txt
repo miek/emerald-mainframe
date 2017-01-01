@@ -26,6 +26,7 @@ list(APPEND emerald-mainframe_sources
     main.cpp
     filesource.cpp
     fft.cpp
+    histogram.cpp
     mainwindow.cpp
     specanwidget.cpp
 )
